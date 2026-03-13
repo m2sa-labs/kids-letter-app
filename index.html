@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>きょうのおてがみ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <section id="screen1" class="screen active">
+  <img src="assets/title.png" class="title-img">
+
+  <div class="hero-area">
+    <img src="assets/girl-post.png" class="hero-img">
+  </div>
+
+  <div class="menu-area">
+  <img src="assets/btn_make.png" class="menu-btn" onclick="goScreen(2)">
+  <img src="assets/btn_read.png" class="menu-btn" onclick="goScreen(6)">
+</div>
+</section>
+
+    <section id="screen2" class="screen">
+      <img src="assets/heading_recipient.png" class="heading-img">
+      <div id="recipientGrid" class="grid2"></div>
+     <div class="image-btn-row">
+  <img src="assets/btn_add.png"
+       class="action-img-btn"
+       onclick="addRecipient()">
+
+  <img src="assets/btn_back.png"
+       class="action-img-btn"
+       onclick="goScreen(1)">
+</div>
+    </section>
+
+    <section id="screen3" class="screen">
+  <img src="assets/heading_paper.png" class="heading-img">
+  <div id="paperGrid" class="grid2"></div>
+
+  <div class="image-btn-row">
+    <img src="assets/btn_back.png"
+         class="action-img-btn"
+         onclick="goScreen(2)"
+         alt="もどる">
+  </div>
+</section>
+
+ <section id="screen4" class="screen">
+  <div id="selectedPaperPreview" class="paper-preview">
+    <img id="selectedPaperImg" class="paper-bg-img" src="" alt="">
+    <div id="letterPreview" class="letter-preview"></div>
+  </div>
+
+  <div class="image-btn-row">
+    <img src="assets/btn_erase.png" class="action-img-btn" onclick="deleteOne()" alt="けす">
+    <img src="assets/btn_erase_all.png" class="action-img-btn" onclick="deleteAll()" alt="ぜんぶけす">
+    <img src="assets/btn_done.png" class="action-img-btn" onclick="goToCheck()" alt="できた">
+  </div>
+
+  <div id="stampArea" class="stamp-row"></div>
+
+  <div id="hiraganaArea" class="hiragana-area"></div>
+</section>
+
+   <section id="screen5" class="screen">
+  <img src="assets/heading_check.png" class="heading-img">
+
+ <div id="finalPaperPreview" class="paper-preview">
+  <img id="finalPaperImg" class="paper-bg-img" src="" alt="">
+  <div id="finalLetterPreview" class="letter-preview"></div>
+</div>
+
+  <div class="bottom-actions">
+  <img src="assets/btn_back.png"
+       class="action-img-btn"
+       onclick="goScreen(4)"
+       alt="もどる">
+
+ <img src="assets/btn_post.png"
+     class="action-img-btn post-btn"
+     onclick="sendLetter()"
+     alt="ぽすとにいれる">
+</div>
+</section>
+ 
+<!-- よむ画面 -->
+<section id="screen6" class="screen">
+  <div class="screen-header">
+    <img src="assets/heading_read.png" class="heading-img">
+  </div>
+
+  <div class="letter-list"></div>
+
+ <div class="bottom-actions">
+  <img src="assets/btn_cleanup.png"
+       class="action-img-btn cleanup-btn"
+       onclick="cleanupLetters()"
+       alt="おかたづけ">
+    <img src="assets/btn_back.png"
+         class="action-img-btn"
+         onclick="goScreen(1)"
+         alt="もどる">
+  </div>
+</section>
+
+<section id="read-letter" class="screen">
+
+  <div id="readPaperPreview" class="paper-preview large">
+    <img id="readPaperImg" class="paper-bg-img" src="" alt="">
+    <div id="letterContent" class="letter-preview"></div>
+  </div>
+
+  <div class="bottom-actions image-btn-row single">
+    <img src="assets/btn_back.png"
+         class="action-img-btn"
+         onclick="goHome()"
+         alt="もどる">
+  </div>
+
+</section>
+
+<section id="screen7" class="screen">
+  <img src="assets/heading_recipient.png" class="heading-img">
+
+  <div class="add-recipient-card">
+    <div class="add-recipient-label">なまえをいれてね</div>
+    <input type="text" id="newRecipientName" class="name-input" maxlength="10">
+
+    <div class="add-recipient-label">アイコンをえらんでね</div>
+    <div id="iconChoiceArea" class="icon-choice-grid"></div>
+  </div>
+
+  <div class="row image-btn-row">
+    <img src="assets/btn_done.png"
+         class="action-img-btn"
+         onclick="saveNewRecipient()"
+         alt="できた">
+
+    <img src="assets/btn_back.png"
+         class="action-img-btn"
+         onclick="backToRecipientList()"
+         alt="もどる">
+  </div>
+</section>
+
+  <script src="script.js"></script>
+</body>
+</html>

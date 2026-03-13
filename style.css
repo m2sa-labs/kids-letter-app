@@ -1,0 +1,583 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+body {
+  overscroll-behavior: none;
+  background-image: url("assets/otegami-background.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 14px 14px 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.screen {
+  display: none;
+  min-height: auto;
+  animation: fadeIn 0.25s ease;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.empty-message {
+  text-align: center;
+  padding: 24px;
+  font-size: 20px;
+  color: #777;
+}
+
+/* ===== トップ画面 ===== */
+
+.title-img {
+  width: 300px;
+  max-width: 78vw;
+  display: block;
+  margin: 10px auto 8px;
+  filter: drop-shadow(0 0 8px white);
+}
+
+.hero-area {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 18px;
+}
+
+.hero-img {
+  width: 320px;
+  max-width: 82vw;
+  display: block;
+  margin: 0 auto;
+}
+
+.menu-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: nowrap;
+}
+
+.menu-btn {
+  width: 170px;
+  max-width: 38vw;
+  display: block;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* ===== 見出し・共通画像ボタン ===== */
+
+.heading-img {
+  width: 220px;
+  display: block;
+  margin: 0 auto 18px;
+}
+
+.image-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.image-btn-row.single {
+  gap: 0;
+}
+
+.action-img-btn {
+  width: 140px;
+  max-width: 30vw;
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.12s ease;
+}
+
+.action-img-btn:active {
+  transform: scale(0.95);
+}
+
+.cleanup-btn {
+  width: 220px;
+  max-width: 48vw;
+  display: block;
+}
+
+.post-btn {
+  width: 220px;
+  max-width: 48vw;
+}
+
+/* ===== 宛先 ===== */
+
+.grid2 {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.recipient-btn {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  border-radius: 999px;
+  padding: 10px 8px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.recipient-btn:active {
+  transform: scale(0.97);
+}
+
+.recipient-face {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.recipient-name {
+  font-size: 18px;
+  color: #7e7096;
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+/* ===== 便箋選択 ===== */
+
+.paper-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.paper-card {
+  width: 120px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.paper-card:active {
+  transform: scale(0.97);
+}
+
+/* ===== 便箋プレビュー ===== */
+
+#selectedPaperPreview {
+  overflow: hidden;
+}
+
+.paper-preview {
+  width: 78%;
+  max-width: 320px;
+  min-height: 360px;
+  aspect-ratio: 1 / 1.15;
+  margin: 0 auto;
+  padding: 32px 20px 20px 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  box-shadow: 0 14px 30px rgba(164, 150, 216, 0.22);
+  border: 3px solid rgba(255, 255, 255, 0.75);
+}
+
+.paper-bg-img {
+  width: 120%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(1.08);
+  transform-origin: top center;
+  z-index: 0;
+}
+
+.paper-inner {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 22px;
+  min-height: 210px;
+  height: 100%;
+  padding: 4px 18px 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.paper-preview .paper-inner,
+.paper-preview .letter-preview {
+  position: relative;
+  z-index: 1;
+}
+
+.letter-preview {
+  white-space: pre-wrap;
+  font-size: 26px;
+  line-height: 1.7;
+  color: #8d6670;
+  text-align: center;
+  font-weight: 800;
+  padding-top: 4px;
+}
+
+#readPaperPreview {
+  width: 100%;
+  max-width: 350px;
+  min-height: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#read-letter.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - 28px);
+  padding-top: 8px;
+}
+
+#read-letter .letter-preview {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+#read-letter .paper-inner {
+  min-height: 240px;
+  padding: 18px 16px;
+  background: transparent;
+}
+
+#read-letter .bottom-actions {
+  margin-top: 14px;
+  padding-bottom: 12px;
+}
+
+/* ===== 編集ボタン・スタンプ ===== */
+
+.editor-top-buttons,
+.bottom-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.bottom-actions {
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-top: 12px;
+}
+
+.stamp-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0 16px;
+  flex-wrap: wrap;
+}
+
+.stamp-btn-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.stamp-btn-img:active {
+  transform: scale(0.92);
+}
+
+.inline-stamp {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+/* ===== ひらがなキーボード ===== */
+
+.hiragana-area {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.hira-btn {
+  height: 48px;
+  border-radius: 14px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #5f5f5f;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.12s ease;
+}
+
+.hira-btn:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.new-line-btn {
+  font-size: 15px;
+  line-height: 1.05;
+  padding-top: 2px;
+}
+
+.hira-empty {
+  min-height: 48px;
+}
+
+.small-hira {
+  font-size: 22px;
+}
+
+/* ===== おてがみ一覧 ===== */
+
+.letter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.letter-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: calc(100% - 24px);
+  margin: 0 auto;
+  background: rgba(255,255,255,0.6);
+  border-radius: 20px;
+  padding: 12px 14px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.letter-icon {
+  font-size: 18px;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.letter-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+}
+
+.letter-date {
+  font-size: 16px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* ===== 宛先追加 ===== */
+
+.add-recipient-card {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto 18px;
+  padding: 20px 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.add-recipient-label {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: #7e7096;
+  margin-bottom: 10px;
+}
+
+.name-input {
+  width: 100%;
+  max-width: 220px;
+  display: block;
+  margin: 0 auto 18px;
+  padding: 12px 14px;
+  font-size: 22px;
+  text-align: center;
+  color: #7e7096;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.45);
+  outline: none;
+}
+
+.icon-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  justify-items: center;
+  margin-top: 10px;
+}
+
+.icon-choice-btn {
+  width: 62px;
+  height: 62px;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 30px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-choice-btn.selected {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 0 0 3px rgba(255, 213, 240, 0.9),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ===== スマホ ===== */
+
+@media (max-width: 430px) {
+  .title-img {
+    width: 280px;
+    max-width: 82vw;
+  }
+
+  .hero-img {
+    width: 300px;
+    max-width: 84vw;
+  }
+
+  .hiragana-area {
+    gap: 6px;
+  }
+
+  .hira-btn {
+    height: 42px;
+    font-size: 22px;
+    border-radius: 12px;
+  }
+
+  .letter-preview {
+    font-size: 29px;
+  }
+}
+.letter-check {
+  width: 42px;
+  height: 42px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.letter-check::before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.12));
+  transform: scale(1);
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.letter-check:checked::before {
+  content: "✅";
+  transform: scale(1.08);
+  filter: drop-shadow(0 2px 6px rgba(255, 210, 90, 0.55));
+}
+
+.letter-check:active::before {
+  transform: scale(0.92);
+}
