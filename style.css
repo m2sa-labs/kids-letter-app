@@ -102,7 +102,14 @@ button {
   max-width: 38vw;
   display: block;
   margin: 0;
+  margin-top: 20px;
   cursor: pointer;
+}
+#startScreen{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ===== 見出し・共通画像ボタン ===== */
