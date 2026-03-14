@@ -275,12 +275,13 @@ button {
 
 .letter-preview {
   white-space: pre-wrap;
-  font-size: 26px;
+  font-size: 22px;
   line-height: 1.7;
   color: #8d6670;
   text-align: center;
   font-weight: 800;
   padding-top: 4px;
+  word-break: keep-all;
 }
 
 #readPaperPreview {
@@ -315,7 +316,39 @@ button {
   margin-top: 14px;
   padding-bottom: 12px;
 }
+.write-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+.write-actions-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
 
+.write-actions-row .action-img-btn {
+  width: 72px;
+  max-width: 22vw;
+  height: auto;
+  display: block;
+}
+.write-one-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+}
+
+.write-one-row .action-img-btn{
+  width:70px;
+  max-width:20vw;
+  height:auto;
+}
 /* ===== 編集ボタン・スタンプ ===== */
 
 .editor-top-buttons,

@@ -363,10 +363,13 @@ function convertTextWithStamps(text) {
     .replace(/\[strawberry\]/g, "⑤")
     .replace(/\[rainbow\]/g, "⑥");
 
-  text = text
-    .split("\n")
-    .map(line => line.match(/.{1,9}/g)?.join("\n") || "")
-    .join("\n");
+  const isSmallScreen = window.innerWidth < 500;
+const charsPerLine = isSmallScreen ? 7 : 9;
+
+text = text
+  .split("\n")
+  .map(line => line.match(new RegExp(`.{1,${charsPerLine}}`, "g"))?.join("\n") || "")
+  .join("\n");
 
   return text
     .replace(/①/g, '<img src="assets/assetsstamp_heart.png" class="inline-stamp">')
@@ -377,7 +380,9 @@ function convertTextWithStamps(text) {
     .replace(/⑥/g, '<img src="assets/assetsstamp_rainbow.png" class="inline-stamp">')
     .replace(/\n/g, "<br>");
 }
-
+function backToPaperSelect() {
+  goScreen(3);
+}
 function updateLetterPreview() {
   const preview = document.getElementById("letterPreview");
   if (!preview) return;
