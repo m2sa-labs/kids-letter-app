@@ -71,7 +71,7 @@ button {
   width: 300px;
   max-width: 78vw;
   display: block;
-  margin: 10px auto 8px;
+  margin: 0 auto 8px;
   filter: drop-shadow(0 0 8px white);
 }
 
@@ -95,6 +95,7 @@ button {
   align-items: center;
   gap: 14px;
   flex-wrap: nowrap;
+  margin-top: 8px;
 }
 
 .menu-btn {
@@ -102,14 +103,17 @@ button {
   max-width: 38vw;
   display: block;
   margin: 0;
-  margin-top: 20px;
   cursor: pointer;
 }
-#startScreen{
+
+#screen1 {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 20px 16px 60px;
+  box-sizing: border-box;
 }
 
 /* ===== 見出し・共通画像ボタン ===== */
