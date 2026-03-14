@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>きょうのおてがみ</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -29,7 +29,9 @@
   <img src="assets/btn_add.png"
        class="action-img-btn"
        onclick="addRecipient()">
-
+<img src="assets/btn_erase.png"
+     class="action-img-btn"
+     onclick="toggleDeleteMode()">
   <img src="assets/btn_back.png"
        class="action-img-btn"
        onclick="goScreen(1)">

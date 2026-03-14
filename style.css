@@ -9,6 +9,7 @@ body {
   padding: 0;
   min-height: 100%;
   font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  touch-action: manipulation;
 }
 
 body {
@@ -349,6 +350,20 @@ button {
   max-width:20vw;
   height:auto;
 }
+.letter-to{
+  transform: translateY(-6px);
+  margin-bottom: 2px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  font-size: 1.08em;
+  color: #7f5662;
+}
+.letter-body{
+  font-weight:700;
+}
+.letter-body {
+  margin-top: 0;
+}
 /* ===== 編集ボタン・スタンプ ===== */
 
 .editor-top-buttons,
@@ -359,7 +374,12 @@ button {
   flex-wrap: wrap;
   margin-top: 14px;
 }
-
+.recipient-delete{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  font-size:18px;
+}
 .bottom-actions {
   justify-content: space-between;
   align-items: center;
@@ -386,13 +406,12 @@ button {
 .stamp-btn-img:active {
   transform: scale(0.92);
 }
-
 .inline-stamp {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
-  vertical-align: middle;
-  margin: 0 2px;
+  vertical-align: -2px;
+  margin: 0;
 }
 
 /* ===== ひらがなキーボード ===== */
@@ -486,20 +505,20 @@ button {
 }
 
 .bigChar-show{
-  animation: popChar 0.5s ease;
+  animation: popChar 0.35s ease-out;
 }
 
 @keyframes popChar{
   0%{
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
   }
-  40%{
-    transform: translate(-50%, -50%) scale(1.2);
+  70%{
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
   100%{
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(0.92);
     opacity: 0;
   }
 }
@@ -610,11 +629,11 @@ button {
 }
 
 .icon-choice-btn.selected {
-  transform: scale(1.06);
-  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.08);
+  background: rgba(255, 180, 210, 0.35);
   box-shadow:
-    0 0 0 3px rgba(255, 213, 240, 0.9),
-    0 4px 10px rgba(0, 0, 0, 0.08);
+    0 0 0 4px #ff7aa8,
+    0 6px 14px rgba(255, 120, 160, 0.35);
 }
 
 .row {

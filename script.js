@@ -140,21 +140,41 @@ function renderRecipients() {
 
   grid.innerHTML = "";
 
-  recipients.forEach(recipient => {
+  recipients.forEach((recipient, index) => {
     const btn = document.createElement("button");
     btn.className = "recipient-btn";
+
     btn.onclick = function () {
-      selectRecipient(recipient.name);
+      if(!deleteMode){
+        selectRecipient(recipient.name);
+      }
     };
 
     btn.innerHTML =
       '<div class="recipient-face">' + recipient.icon + '</div>' +
       '<div class="recipient-name">' + recipient.name + '</div>';
 
+    // 削除モードのときだけ ❌ を表示
+    if(deleteMode){
+      const del = document.createElement("div");
+      del.className = "recipient-delete";
+      del.textContent = "❌";
+
+    del.onclick = function(e){
+  e.stopPropagation();
+  deleteRecipient(index);
+};
+
+      btn.appendChild(del);
+    }
+
     grid.appendChild(btn);
   });
 }
-
+function deleteRecipient(index) {
+  recipients.splice(index, 1);
+  renderRecipients();
+}
 function selectRecipient(name) {
   selectedRecipient = name;
   goScreen(3);
@@ -351,7 +371,7 @@ function deleteAll() {
 
 function buildLetterText() {
   const toText = selectedRecipient ? selectedRecipient + "へ" : "だれかへ";
- return toText + "\n" + letterText;
+  return toText + "\n" + letterText;
 }
 
 function convertTextWithStamps(text) {
@@ -387,7 +407,13 @@ function updateLetterPreview() {
   const preview = document.getElementById("letterPreview");
   if (!preview) return;
 
-  preview.innerHTML = convertTextWithStamps(buildLetterText());
+  const toText = selectedRecipient ? selectedRecipient + "へ" : "だれかへ";
+  const bodyHtml = convertTextWithStamps(letterText);
+
+  preview.innerHTML =
+    '<div class="letter-to">' + toText + '</div>' +
+    '<div class="letter-body">' + bodyHtml + '</div>';
+
   applyPaperClass("selectedPaperPreview", selectedPaper);
 }
 
@@ -395,10 +421,21 @@ function updateFinalPreview() {
   const preview = document.getElementById("finalLetterPreview");
   if (!preview) return;
 
-  preview.innerHTML = convertTextWithStamps(buildLetterText());
+  const toText = selectedRecipient ? selectedRecipient + "へ" : "だれかへ";
+  const bodyHtml = convertTextWithStamps(letterText);
+
+  preview.innerHTML =
+    '<div class="letter-to">' + toText + '</div>' +
+    '<div class="letter-body">' + bodyHtml + '</div>';
+
   applyPaperClass("finalPaperPreview", selectedPaper);
 }
+let deleteMode = false;
 
+function toggleDeleteMode(){
+  deleteMode = !deleteMode;
+  renderRecipients();
+}
 function goToCheck() {
   updateFinalPreview();
   goScreen(5);
