@@ -106,9 +106,8 @@ button {
   cursor: pointer;
 }
 
-#screen1 {
+#screen1.screen.active {
   min-height: 100vh;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
