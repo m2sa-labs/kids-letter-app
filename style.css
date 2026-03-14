@@ -118,7 +118,7 @@ button {
 /* ===== 見出し・共通画像ボタン ===== */
 
 .heading-img {
-  width: 220px;
+  width: 280px;
   display: block;
   margin: 0 auto 18px;
 }
@@ -171,8 +171,8 @@ button {
 }
 
 .recipient-btn {
-  width: 90px;
-  height: 90px;
+  width: 72px;
+  height: 72px;
   background: rgba(255, 255, 255, 0.28);
   border: 2px solid rgba(255, 255, 255, 0.78);
   border-radius: 999px;
@@ -195,12 +195,12 @@ button {
 }
 
 .recipient-face {
-  font-size: 32px;
+  font-size: 26px;
   line-height: 1;
 }
 
 .recipient-name {
-  font-size: 18px;
+  font-size: 16px;
   color: #7e7096;
   font-weight: 900;
   margin-top: 2px;
@@ -231,12 +231,12 @@ button {
 }
 
 .paper-preview {
-  width: 78%;
-  max-width: 320px;
-  min-height: 360px;
+  width: 70%;
+  max-width: 280px;
+  min-height: 300px;
   aspect-ratio: 1 / 1.15;
   margin: 0 auto;
-  padding: 32px 20px 20px 20px;
+  padding: 28px 18px 18px 18px;
   position: relative;
   overflow: hidden;
   border-radius: 26px;
@@ -391,6 +391,35 @@ button {
   cursor: pointer;
   transition: transform 0.08s ease, background 0.12s ease;
 }
+#screen4.screen.active {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+#selectedPaperPreview {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+#screen4 .image-btn-row {
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+
+#stampArea {
+  flex-shrink: 0;
+  margin: 10px 0 10px;
+}
+
+#hiraganaArea {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 14px;
+}
 
 .hira-btn:active {
   transform: scale(0.96);
@@ -410,7 +439,37 @@ button {
 .small-hira {
   font-size: 22px;
 }
+#bigChar{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  font-weight: 900;
+  color: #ff7aa8;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 999;
+}
 
+.bigChar-show{
+  animation: popChar 0.5s ease;
+}
+
+@keyframes popChar{
+  0%{
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  40%{
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  100%{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
 /* ===== おてがみ一覧 ===== */
 
 .letter-list {

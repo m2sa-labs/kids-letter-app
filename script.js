@@ -238,6 +238,7 @@ function renderHiragana() {
 }
 
 function addChar(char) {
+  const beforeText = letterText;
 
   // 濁点
   if (char === "゛") {
@@ -288,10 +289,29 @@ function addChar(char) {
     const paperRect = paper.getBoundingClientRect();
 
     if (previewRect.bottom > paperRect.bottom - 36) {
-      letterText = letterText.slice(0, -1);
+      letterText = beforeText;
       updateLetterPreview();
+      return;
+    }
+
+    // 実際に追加・変換された最後の1文字をポン表示
+    if (letterText !== beforeText && letterText.length > 0) {
+      showBigChar(letterText.slice(-1));
     }
   });
+}
+function showBigChar(char){
+
+  const el = document.getElementById("bigChar");
+
+  el.textContent = char;
+
+  el.classList.remove("bigChar-show");
+
+  void el.offsetWidth;
+
+  el.classList.add("bigChar-show");
+
 }
 function addNewLine() {
   letterText += "\n";
