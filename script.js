@@ -5,10 +5,12 @@ let openedLetterIndex = null;
 let newRecipientName = "";
 let newRecipientIcon = "";
 const recipientIcons = ["🌸", "⭐", "💖", "🎀", "🧸", "🌼", "🍓", "🌈"];
-const recipients = [
+const defaultRecipients = [
   { name: "まま", icon: "🌸" },
   { name: "ぱぱ", icon: "⭐" }
 ];
+
+let recipients = JSON.parse(localStorage.getItem("kidsLetterRecipients")) || defaultRecipients;
 
 const papers = [
   { id: "rainbow", img: "assets/paper_rainbow.png" },
@@ -42,7 +44,9 @@ const stamps = [
   { id: "strawberry", src: "assets/assetsstamp_strawberry.png", alt: "いちご" },
   { id: "rainbow", src: "assets/assetsstamp_rainbow.png", alt: "にじ" }
 ];
-
+function saveRecipients() {
+  localStorage.setItem("kidsLetterRecipients", JSON.stringify(recipients));
+}
 function scrollToTop() {
   window.scrollTo(0, 0);
   document.body.scrollTop = 0;
@@ -634,9 +638,13 @@ function saveNewRecipient() {
   }
 
   recipients.push({
-    name: cleanName,
-    icon: newRecipientIcon
-  });
+  name: cleanName,
+  icon: newRecipientIcon
+});
+
+saveRecipients();   
+
+renderRecipients();
 
   renderRecipients();
   goScreen(2);
