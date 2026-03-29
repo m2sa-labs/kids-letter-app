@@ -242,7 +242,7 @@ button {
   overflow: hidden;
   border-radius: 26px;
   box-shadow: 0 14px 30px rgba(164, 150, 216, 0.22);
-  border: 3px solid rgba(255, 255, 255, 0.75);
+  border: 3px solid rgba(255, 255, 255, 0);
 }
 
 .paper-bg-img {
