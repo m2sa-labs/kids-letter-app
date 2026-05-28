@@ -1,156 +1,1222 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="manifest" href="manifest.json">
-  <title>きょうのおてがみ</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アプリ紹介</title>
+
+  <style>
+ body {
+  margin: 0;
+  font-family: "Helvetica Neue", "Yu Gothic", "Hiragino Sans", sans-serif;
+  background: #ffffff;
+  color: #3f332b;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 70px 28px;
+}
+
+.header {
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: left;
+}
+.hero-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0;
+}
+
+
+.hero-text {
+  font-size: 16px;
+  line-height: 2.4;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+.hero-title {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.hero-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0;
+}
+
+.hero-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.animal {
+  width: 220px;
+  justify-self: center;
+}
+
+.cards {
+  display: block;
+}
+.app-image-wrap {
+  display: block;
+}
+
+.app-screenshot {
+  width: 100%;
+  max-width: 520px;
+}
+
+
+.app-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0;
+  border-top: 1px solid #e8e2dc;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.app-card:last-child {
+  border-bottom: 1px solid #e8e2dc;
+}
+
+.app-left {
+  text-align: left;
+}
+
+
+.app-points {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.app-points li {
+  font-size: 15px;
+  line-height: 2.25;
+  margin-bottom: 18px;
+}
+
+.app-points li {
+  position: relative;
+  padding-left: 42px;
+
+  white-space: pre-line;
+}
+.app-points li::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 4px;
+
+  width: 22px;
+  height: 22px;
+
+  background-image: url("assets/heart1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.arrow-down {
+  font-size: 20px;
+  margin: 22px 0;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 22px;
+  font-weight: 300;
+
+  margin: 0 0 24px;  /* ← 18px → 24px に */
+  
+  letter-spacing: 0.16em;
+}
+
+.title-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 18px;
+  letter-spacing: 0.16em;
+}
+.appstore-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin: 14px 0 0 34px;
+
+  text-decoration: none;
+  color: #3f332b;
+
+  transition: 0.2s ease;
+}
+
+.app-subtitle {
+  display: none;
+}
+
+.badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.badge {
+  background: #faf7f3;
+  border: 1px solid #eee7df;
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.store-link {
+  display: inline-block;
+  color: #8c8d55;
+  background: transparent;
+  text-decoration: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+
+.app-image-wrap {
+  width: 100%;
+}
+
+.app-screenshot {
+  width: 100%;
+  display: block;
+  border-radius: 28px;
+  box-shadow: 0 16px 38px rgba(80, 55, 35, 0.08);
+}
+
+.form-box {
+  background: #fffdf9;
+  border-radius: 28px;
+  padding: 28px;
+  margin-bottom: 36px;
+  box-shadow: 0 8px 20px rgba(80,55,35,0.08);
+  display: none;
+}
+
+input, textarea, select {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #ddd0bd;
+  font-size: 16px;
+  background: #fff;
+}
+
+textarea {
+  height: 90px;
+}
+
+button {
+  border: none;
+  background: #8c8d55;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+  .badge {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  h1 {
+    font-size: 12px;
+  }
+
+  .animal {
+    width: 260px; /* ←くまも小さく */
+margin-top: 10px;
+
+  }
+
+
+    .header {
+  position: relative;
+}
+
+.add-open-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 30px;
+  line-height: 1;
+  background: #8c8d55;
+  color: white;
+}
+.edit-btn {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 20px;
+  background: #f4ebde;
+  color: #4b3324;
+}
+.delete-btn {
+  position: absolute;
+  right: 82px;
+  top: 28px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 22px;
+  background: #f4ebde;
+  color: #4b3324;
+}
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.app-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+}
+
+.app-title {
+  font-size: 20px;
+  margin: 0;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  margin-top: 2px;
+}
+.app-header {
+  justify-content: flex-start;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.line {
+  margin-top: 18px;
+}
+/* スマホ調整 */
+@media (max-width: 760px) {
+  .animal {
+    width: 105px;
+  }
+
+
+  ul {
+    width: 100%;
+    margin: 0 0 24px 0;
+    padding-left: 18px;
+  }
+
+  li {
+    text-align: left;
+    padding-left: 0;
+  }
+}
+.menu-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  padding: 0;
+  background: #f4ebde;
+  color: #4b3324;
+  font-size: 24px;
+  box-shadow: 0 6px 14px rgba(80,55,35,0.12);
+}
+
+.menu-box {
+  position: fixed;
+  top: 72px;
+  right: 18px;
+  z-index: 1000;
+  background: #fffdf9;
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 8px 22px rgba(80,55,35,0.14);
+  display: none;
+  min-width: 190px;
+}
+
+.menu-box button {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: #4b3324;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.menu-box button:hover {
+  background: #f4ebde;
+}
+
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+}
+
+.policy-box {
+  background: #fffdf9;
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 8px 20px rgba(80,55,35,0.08);
+  line-height: 1.9;
+}
+
+.policy-box h2 {
+  margin-top: 0;
+  font-size: 28px;
+}
+
+.policy-box h3 {
+  margin-top: 28px;
+  color: #8c8d55;
+}
+@media (max-width: 760px) {
+  .page {
+    padding: 42px 22px;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+    line-height: 2.2;
+  }
+
+  .hero-title {
+    font-size: 20px;
+  }
+
+  .animal {
+    width: 150px;
+  }
+
+  .app-card {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 52px 0;
+  }
+
+  .app-points li {
+    font-size: 14px;
+  }
+
+  .app-title {
+    font-size: 20px;
+  }
+#profilePage p {
+  font-size: 13px;
+  line-height: 2;
+}
+
+}
+.app-card {
+  display: grid !important;
+
+  grid-template-columns: 320px 320px !important;
+
+  justify-content: center !important;
+  align-items: center !important;
+
+  gap: 90px !important;
+
+  padding: 64px 0;
+}
+.app-left {
+  text-align: left;
+
+  width: 320px;
+}
+
+.app-image-wrap {
+  display: block !important;
+  width: 100% !important;
+}
+
+.app-screenshot {
+  display: block !important;
+
+  width: 240px !important;
+  max-width: 100% !important;
+
+  height: auto !important;
+
+  border-radius: 28px;
+  box-shadow: 0 16px 38px rgba(80, 55, 35, 0.08);
+}
+.appstore-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin: 14px 0 0 34px;
+
+  text-decoration: none;
+  color: #3f332b;
+
+  transition: 0.2s ease;
+}
+
+
+.appstore-badge:hover {
+  background: #f4ede6;
+  transform: translateY(-1px);
+}
+.profile-bear {
+  width: 170px;   /* ← 120 → 170くらい */
+
+  display: block;
+
+  margin-top: 18px;   /* ← 上だけ余白 */
+  margin-left: 0;     /* ← 左揃え */
+}
+.growth-box {
+  margin-top: 42px;
+
+  border-top: 1px solid #eee5dc;
+  padding-top: 32px;
+}
+
+.growth-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 28px;
+
+  font-size: 18px;
+  letter-spacing: 0.12em;
+}
+
+.growth-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.growth-item {
+  display: flex;
+  gap: 18px;
+
+  margin-bottom: 26px;
+}
+
+.growth-number {
+  width: 72px;
+
+  flex-shrink: 0;
+
+  color: #8c8d55;
+
+  font-size: 14px;   /* ← 18px → 14px に */
+  line-height: 2;    /* ← growth-text と揃える */
+}
+
+.growth-text {
+  line-height: 2;
+  font-size: 14px;
+}
+.growth-sub {
+  margin-left: 32px;
+
+  margin-top: -10px;
+  margin-bottom: 28px;
+
+  font-size: 13px;
+  color: #8c8d55;
+
+  letter-spacing: 0.12em;
+}
+/* スマホだけ：文章→タイトル→iOSボタン→スクショ */
+@media (max-width: 760px) {
+  .app-card {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+
+    width: 100% !important;
+    gap: 22px !important;
+    padding: 52px 0 !important;
+  }
+
+  .app-left {
+    width: 100% !important;
+  }
+
+  .app-image-wrap {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .app-screenshot {
+    width: 82% !important;
+    max-width: 320px !important;
+  }
+
+  .appstore-badge {
+    margin: 14px 0 0 34px !important;
+  }
+.profile-bear {
+  width: 230px;
+}
+
+}
+  </style>
 </head>
+
 <body>
-  <div class="app-shell">
+  <main class="page">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-    <section id="screen1" class="screen active">
-  <img src="assets/title.png" class="title-img">
+<nav class="menu-box" id="menuBox">
+  <button onclick="showPage('apps')">アプリ一覧</button>
+  <button onclick="showPage('profile')">profile</button>
+  <button onclick="showPage('privacy')">プライバシーポリシー</button>
+  <button onclick="showPage('contact')">お問い合わせ</button>
+  <button onclick="showPage('links')">外部リンク</button>
+</nav>
 
-  <div class="hero-area">
-    <img src="assets/girl-post.png" class="hero-img">
+
+
+<section id="appsPage" class="page-section active">
+    <header class="header">
+
+
+    
+    <div class="header-inner">
+  <div class="hero-text">
+   <div>小１と年少の２児のママ</div>
+<div>子育てしてて</div>
+
+<div class="hero-line">
+  <img src="assets/heart1.png" class="hero-icon">
+  <span>これ困った</span>
+</div>
+
+<div class="hero-line">
+  <img src="assets/heart1.png" class="hero-icon">
+  <span>これあったら便利かも</span>
+</div>
+
+<div>をアプリにしています</div>
+
   </div>
 
-  <div class="menu-area">
-  <img src="assets/btn_make.png" class="menu-btn" onclick="goScreen(2)">
-  <img src="assets/btn_read.png" class="menu-btn" onclick="goScreen(6)">
+  <img src="bear.png" class="animal">
 </div>
-</section>
 
-    <section id="screen2" class="screen">
-      <img src="assets/heading_recipient.png" class="heading-img">
-      <div id="recipientGrid" class="grid2"></div>
-     <div class="image-btn-row">
-  <img src="assets/btn_add.png"
-       class="action-img-btn"
-       onclick="addRecipient()">
-<img src="assets/btn_erase.png"
-     class="action-img-btn"
-     onclick="toggleDeleteMode()">
-  <img src="assets/btn_back.png"
-       class="action-img-btn"
-       onclick="goScreen(1)">
-</div>
+
+    </header>
+
+    <section class="form-box">
+      <h2>アプリを登録する</h2>
+
+      <input id="titleInput" placeholder="アプリ名">
+      <input id="subtitleInput" placeholder="サブタイトル">
+      <input id="linkInput" placeholder="App Storeなどのリンク">
+
+      <input type="file" id="iconInput" accept="image/*">
+
+      <textarea id="pointsInput" placeholder="特徴を4つまで入力。1行に1つずつ"></textarea>
+
+      <div class="check-row">
+        <label><input type="checkbox" value="iOS" class="device">iOS</label>
+        <label><input type="checkbox" value="Android" class="device">Android</label>
+        <label><input type="checkbox" value="iPad" class="device">iPad</label>
+      </div>
+
+      <select id="priceInput">
+        <option value="無料アプリ">無料アプリ</option>
+        <option value="一部有料">一部有料</option>
+      </select>
+
+      <button onclick="addApp()">追加する</button>
     </section>
 
-    <section id="screen3" class="screen">
-  <img src="assets/heading_paper.png" class="heading-img">
-  <div id="paperGrid" class="grid2"></div>
+    <section class="cards" id="appCards"></section>
+    </section>
+<section id="privacyPage" class="page-section">
+  <div class="policy-box">
+    <h2>プライバシーポリシー</h2>
 
-  <div class="image-btn-row">
-    <img src="assets/btn_back.png"
-         class="action-img-btn"
-         onclick="goScreen(2)"
-         alt="もどる">
+    <p>
+      当サイトでは、紹介しているアプリを安心してご利用いただけるよう、
+      個人情報の取り扱いについて以下の通り定めます。
+    </p>
+
+    <h3>1. 個人情報の収集について</h3>
+    <p>
+      当サイトおよび紹介アプリでは、個人を特定できる情報を
+      必要なく収集することはありません。
+    </p>
+
+    <h3>2. アプリ内のデータについて</h3>
+    <p>
+      アプリ内で入力された情報は、基本的に端末内に保存されます。
+      外部へ送信されることはありません。
+    </p>
+
+    <h3>3. お問い合わせについて</h3>
+    <p>
+      ご不明な点がありましたら、お問い合わせください。
+    </p>
   </div>
 </section>
 
- <section id="screen4" class="screen">
-    <div id="bigChar"></div>
-  <div id="selectedPaperPreview" class="paper-preview">
-    <img id="selectedPaperImg" class="paper-bg-img" src="" alt="">
-    <div id="letterPreview" class="letter-preview"></div>
-  </div>
+<section id="profilePage" class="page-section">
+  <div class="policy-box">
+    <h2>profile</h2>
+<p>
+小１の女の子、年少の男の子、のママ（３０代）<br>
 
- <div class="image-btn-row write-one-row">
-  <img src="assets/btn_back.png" class="action-img-btn" onclick="backToPaperSelect()" alt="もどる">
-  <img src="assets/btn_erase.png" class="action-img-btn" onclick="deleteOne()" alt="けす">
-  <img src="assets/btn_erase_all.png" class="action-img-btn" onclick="deleteAll()" alt="ぜんぶけす">
-  <img src="assets/btn_done.png" class="action-img-btn" onclick="goToCheck()" alt="できた">
+子どもが寝た後、<br>
+スローペースでアプリ作りを楽しんでいます。<br><br>
+
+こども関連｜自分の困りごと｜趣味<br>
+色々なアプリをつくっていきたいです<br><br>
+
+趣味 読書｜エレクトーン｜株投資信託｜推し活
+
+<br><br>
+
+<img src="bear.png" class="profile-bear">
+<div class="growth-box">
+
+  <div class="growth-title">
+    <img src="tulip.png" class="growth-icon">
+    <span>アプリづくりの成長記録</span>
+  </div>
+<div class="growth-sub">
+  現在つくったアプリ ７つ
 </div>
 
-  <div id="stampArea" class="stamp-row"></div>
 
-  <div id="hiraganaArea" class="hiragana-area"></div>
-</section>
-
-   <section id="screen5" class="screen">
-  <img src="assets/heading_check.png" class="heading-img">
-
- <div id="finalPaperPreview" class="paper-preview">
-  <img id="finalPaperImg" class="paper-bg-img" src="" alt="">
-  <div id="finalLetterPreview" class="letter-preview"></div>
+<div class="growth-item">
+  <div class="growth-number">１つめ</div>
+  <div class="growth-text">
+    HTML / CSS / JS でつくったものを<br>
+    WebView 化して<br>
+    はじめて App Store に提出<br>
+    iPad 対策を覚えた
+  </div>
 </div>
 
-  <div class="bottom-actions">
-  <img src="assets/btn_back.png"
-       class="action-img-btn"
-       onclick="goScreen(4)"
-       alt="もどる">
-
- <img src="assets/btn_post.png"
-     class="action-img-btn post-btn"
-     onclick="sendLetter()"
-     alt="ぽすとにいれる">
+<div class="growth-item">
+  <div class="growth-number">２つめ</div>
+  <div class="growth-text">
+    ダークモード対策を覚えた<br>
+    AVFoundation で<br>
+    BGM 再生を実装した
+  </div>
 </div>
-</section>
- 
-<!-- よむ画面 -->
-<section id="screen6" class="screen">
-  <div class="screen-header">
-    <img src="assets/heading_read.png" class="heading-img">
+
+<div class="growth-item">
+  <div class="growth-number">３つめ</div>
+  <div class="growth-text">
+    はじめて SwiftUI を使った<br>
+    NavigationStack を使った<br>
+    画面遷移を覚えた
   </div>
+</div>
 
-  <div class="letter-list"></div>
-
- <div class="bottom-actions">
-  <img src="assets/btn_cleanup.png"
-       class="action-img-btn cleanup-btn"
-       onclick="cleanupLetters()"
-       alt="おかたづけ">
-    <img src="assets/btn_back.png"
-         class="action-img-btn"
-         onclick="goScreen(1)"
-         alt="もどる">
+<div class="growth-item">
+  <div class="growth-number">４つめ</div>
+  <div class="growth-text">
+    CloudKit ・ 共有機能を実装<br>
+    App Store Connect の流れに<br>
+    慣れてきた
   </div>
-</section>
+</div>
 
-<section id="read-letter" class="screen">
-
-  <div id="readPaperPreview" class="paper-preview large">
-    <img id="readPaperImg" class="paper-bg-img" src="" alt="">
-    <div id="letterContent" class="letter-preview"></div>
+<div class="growth-item">
+  <div class="growth-number">５つめ</div>
+  <div class="growth-text">
+    アイコンバーが<br>
+    気に入った
   </div>
+</div>
 
-  <div class="bottom-actions image-btn-row single">
-    <img src="assets/btn_back.png"
-         class="action-img-btn"
-         onclick="goHome()"
-         alt="もどる">
+<div class="growth-item">
+  <div class="growth-number">６つめ</div>
+  <div class="growth-text">
+    GPT に渡すプロンプトの<br>
+    コツを掴んできた
   </div>
+</div>
 
-</section>
-
-<section id="screen7" class="screen">
-  <img src="assets/heading_recipient.png" class="heading-img">
-
-  <div class="add-recipient-card">
-    <div class="add-recipient-label">なまえをいれてね</div>
-    <input type="text" id="newRecipientName" class="name-input" maxlength="10">
-
-    <div class="add-recipient-label">アイコンをえらんでね</div>
-    <div id="iconChoiceArea" class="icon-choice-grid"></div>
+<div class="growth-item">
+  <div class="growth-number">７つめ</div>
+  <div class="growth-text">
+    通知機能を<br>
+    はじめて実装した
   </div>
+</div>
 
-  <div class="row image-btn-row">
-    <img src="assets/btn_done.png"
-         class="action-img-btn"
-         onclick="saveNewRecipient()"
-         alt="できた">
+</div>
+</p>
 
-    <img src="assets/btn_back.png"
-         class="action-img-btn"
-         onclick="backToRecipientList()"
-         alt="もどる">
+
   </div>
 </section>
 
-  <script src="script.js"></script>
+
+<section id="contactPage" class="page-section">
+  <div class="policy-box">
+    <h2>お問い合わせ</h2>
+
+    <p>
+      アプリに関するご質問・不具合などありましたら、
+      下記までお気軽にご連絡ください。
+    </p>
+
+   <p>
+  お問い合わせはX（Twitter）のDMよりお願いいたします。
+</p>
+
+<a 
+  class="store-link"
+  href="https://x.com/charo_hmyk"
+  target="_blank"
+>
+  X（Twitter）はこちら
+</a>
+
+
+  </div>
+</section>
+
+<section id="linksPage" class="page-section">
+  <div class="policy-box">
+    <h2>外部リンク</h2>
+
+    <a class="store-link" href="https://x.com/charo_hmyk" target="_blank">
+      X（Twitter）
+    </a>
+
+    <br><br>
+
+    <a class="store-link" href="https://note.com/hmyk_312227" target="_blank">
+      note
+    </a>
+  </div>
+</section>
+
+  </main>
+
+  <script>
+    const isAdmin = location.search.includes("admin");
+let apps = [
+  {
+  title: "こども年間スケジュール",
+  subtitle: "親の参加・準備が一目でわかる",
+  link: "https://apps.apple.com/jp/app/id6766062119",
+  icon: "schedule_screen.png",
+points: [
+  "小学生と保育園児で\n年間予定表が2枚になり\n少し把握しづらい。",
+  
+  "親が関係する行事\n「参加」「特別な準備あり」\nを瞬時に見分けたい。",
+
+  "年間の予定をざっと把握したい。"
+],
+
+  devices: ["iOS"],
+  price: "無料アプリ"
+}, 
+
+{
+  title: "こども帰宅時計",
+  subtitle: "帰宅予定時間をアナログ表示",
+  link: "https://apps.apple.com/jp/app/id6773744613",
+  icon: "kitakuclock.png",
+  points: [
+    "小学校は短縮授業などで\n早帰りの日が結構多い。",
+
+    "早帰り日忘れ防止のために\n通知がほしい",
+
+    "アナログ時計でパッと時間を\n確認したい"
+  ],
+  devices: ["iOS"],
+  price: "無料アプリ"
+},
+
+
+{
+  title: "きろくタウン",
+  subtitle: "家族の通院・体調記録アプリ",
+  link: "https://apps.apple.com/app/id6771406356",
+  icon: "kirokutown.png",
+  points: [
+  "「子ども、前どんな症状で病院行ったっけ？」\n「あの大変だった風邪、いつだった？」\nなどの通院・体調の記録を確認したい",
+
+
+  "ゲームが好きなので、\nRPGっぽい雰囲気にして気分をあげたい"
+],
+  devices: ["iOS"],
+  price: "無料アプリ"
+},
+
+ {
+  title: "こどもサイズ帳",
+  subtitle: "今のサイズを一目で確認",
+  link: "https://apps.apple.com/app/id6767790620",
+  icon: "saizu.png",
+  points: [
+  "園や学校書類・病院で体重など書く時、あれ？となることがある",
+  
+  "現在の身長・体重などを\nさっと確認したい",
+
+  "◯歳頃、どれくらいだった？\nとサイズを振り返りたい"
+],
+
+  devices: ["iOS"],
+  price: "無料アプリ"
+}, 
+
+
+  
+  
+  {
+    title: "おつきさま さんしまい",
+    subtitle: "絵本アプリ",
+    link: "https://apps.apple.com/jp/app/id6763572976",
+    icon: "app1.png",
+    points: [
+  "子どもが絵本大好き",
+
+  "月も大好きで\nおつきさまを見ながら\n色々お話しをよくする",
+
+  "お話している内容を元に\n絵本にしたら喜んでくれそう"
+],
+
+    devices: ["iOS"],
+    price: "無料アプリ"
+  }, 
+
+  {
+    title: "こども作品展\nリトルアトリエ",
+    subtitle: "子どもの作品を「保管」＆「展示」",
+    link: "https://apps.apple.com/jp/app/little-atelier/id6761620496",
+    icon: "atelier.png",
+   points: [
+  "保育園でつくった作品が\nどんどん増えていく",
+
+  "気軽に携帯内に保存して\n簡単に振り返りたい",
+
+  "展示されているような感じにしたい"
+],
+    devices: ["iOS"],
+    price: "無料アプリ"
+  },
+{
+  title: "きょうのおてがみ",
+  subtitle: "おてがみつくりたい！を叶えるアプリ",
+  link: "https://apps.apple.com/app/id6761917431",
+  icon: "otegami.png",
+  points: [
+  "ひらがなは読めるけど\nまだ文字はかけない",
+
+  "あいうえお表をつかえば\nお手紙がかけそう",
+
+  "楽しく遊びながらお手紙書いて\n文を考える力も備わってくれたら"
+],
+  devices: ["iOS"],
+  price: "無料アプリ"
+}
+];
+
+    const appCards = document.getElementById("appCards");
+
+    let editingIndex = null;
+
+    function saveApps() {
+      localStorage.setItem("myApps", JSON.stringify(apps));
+    }
+if (isAdmin) {
+  const btn = document.createElement("button");
+  btn.className = "add-open-btn";
+  btn.innerText = "＋";
+  btn.onclick = openForm;
+  document.querySelector(".header").appendChild(btn);
+}
+
+
+function openForm() {
+  document.querySelector(".form-box").style.display = "block";
+  document.querySelector(".form-box").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function editApp(index) {
+  const app = apps[index];
+  editingIndex = index;
+
+  document.getElementById("titleInput").value = app.title;
+  document.getElementById("subtitleInput").value = app.subtitle;
+  document.getElementById("linkInput").value = app.link || "";
+  document.getElementById("pointsInput").value = app.points.join("\n");
+  document.getElementById("priceInput").value = app.price;
+
+  document.querySelectorAll(".device").forEach(input => {
+    input.checked = app.devices.includes(input.value);
+  });
+
+  document.querySelector(".form-box").style.display = "block";
+  document.querySelector(".form-box").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function deleteApp(index) {
+  if (!confirm("このアプリを削除する？")) {
+    return;
+  }
+
+  apps.splice(index, 1);
+  saveApps();
+  renderApps();
+}
+
+    function renderApps() {
+      appCards.innerHTML = "";
+
+      apps.forEach((app, index) => {
+        const card = document.createElement("article");
+        card.className = "app-card";
+card.style.position = "relative";
+
+
+   card.innerHTML = `
+  ${isAdmin ? `
+    <button class="edit-btn" onclick="editApp(${index})">✎</button>
+    <button class="delete-btn" onclick="deleteApp(${index})">×</button>
+  ` : ""}
+
+  <div class="app-left">
+   
+
+    <ul class="app-points">
+      ${app.points.slice(0, 3).map(point => `<li>${point}</li>`).join("")}
+    </ul>
+
+    <div class="arrow-down">↓</div>
+
+    <h2 class="app-title">
+  <img src="tulip.png" class="title-icon">
+  <span>${app.title}</span>
+</h2>
+
+   ${app.link ? `
+  <a class="badge appstore-badge" href="${app.link}" target="_blank">
+    iOS
+  </a>
+` : ""}
+
+</div>
+  <div class="app-image-wrap">
+    <img src="${app.icon}" class="app-screenshot">
+  </div>
+`;
+
+        appCards.appendChild(card);
+      });
+    }
+
+function addApp() {
+  const file = document.getElementById("iconInput").files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const img = new Image();
+
+      img.onload = function() {
+        const canvas = document.createElement("canvas");
+        const size = 500;
+
+        canvas.width = size;
+        canvas.height = size;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, size, size);
+
+        const smallIcon = canvas.toDataURL("image/jpeg", 0.8);
+        saveAppData(smallIcon);
+      };
+
+      img.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    if (editingIndex !== null) {
+      saveAppData(apps[editingIndex].icon);
+    } else {
+      alert("画像選んでね");
+    }
+  }
+}
+
+function saveAppData(icon) {
+  const title = document.getElementById("titleInput").value;
+  const subtitle = document.getElementById("subtitleInput").value;
+  const link = document.getElementById("linkInput").value;
+
+  const points = document.getElementById("pointsInput").value
+    .split("\n")
+    .filter(text => text.trim() !== "")
+    .slice(0, 4);
+
+  const devices = Array.from(document.querySelectorAll(".device:checked"))
+    .map(input => input.value);
+
+  const price = document.getElementById("priceInput").value;
+
+  if (!title || !subtitle || !icon || points.length === 0) {
+    alert("アプリ名・サブタイトル・画像・特徴を入力してね");
+    return;
+  }
+
+const newApp = {
+  title,
+  subtitle,
+  link,
+  icon,
+  points,
+  devices,
+  price
+};
+
+  if (editingIndex === null) {
+    apps.push(newApp);
+  } else {
+    apps[editingIndex] = newApp;
+    editingIndex = null;
+  }
+
+  saveApps();
+  renderApps();
+
+  document.getElementById("titleInput").value = "";
+  document.getElementById("subtitleInput").value = "";
+  document.getElementById("linkInput").value = "";
+  document.getElementById("iconInput").value = "";
+  document.getElementById("pointsInput").value = "";
+  document.querySelectorAll(".device").forEach(input => input.checked = false);
+  document.getElementById("priceInput").value = "無料アプリ";
+
+  document.querySelector(".form-box").style.display = "none";
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function toggleMenu() {
+  const menu = document.getElementById("menuBox");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function showPage(page) {
+  document.getElementById("appsPage").classList.remove("active");
+  document.getElementById("privacyPage").classList.remove("active");
+  document.getElementById("profilePage").classList.remove("active");
+  document.getElementById("contactPage").classList.remove("active");
+  document.getElementById("linksPage").classList.remove("active");
+
+  document.getElementById(page + "Page").classList.add("active");
+
+  document.getElementById("menuBox").style.display = "none";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+    renderApps();
+  </script>
 </body>
 </html>
